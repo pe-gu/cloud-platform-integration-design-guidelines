@@ -1,0 +1,1276 @@
+{
+	"info": {
+		"_postman_id": "3b531138-93a2-45cd-90ac-df42aad05e37",
+		"name": "Enterprise Integration Patterns",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aggregator",
+			"item": [
+				{
+					"name": "Aggregator - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/Aggregator",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"Aggregator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggregator - Message 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version='1.0' encoding='UTF-8'?>\n<ns0:Item xmlns:ns0=\"http://demo.sap.com/eip/aggregator\" ItemNumber=\"10\" PurchaseOrderNumber=\"81001\">\n<ProductId>HT-1030</ProductId>\n<ProductName>Ergo Screen</ProductName>\n<Category>Flat screens</Category>\n<Quantity>2</Quantity>\n<CurrencyCode>EUR</CurrencyCode>\n<Price>460.00</Price>\n<LastMessageIndicator></LastMessageIndicator>\n</ns0:Item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/Aggregator",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"Aggregator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggregator - Message 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version='1.0' encoding='UTF-8'?>\n<ns0:Item xmlns:ns0=\"http://demo.sap.com/eip/aggregator\" ItemNumber=\"20\" PurchaseOrderNumber=\"81001\">\n<ProductId>HT-1101</ProductId>\n<ProductName>Smart Design</ProductName>\n<Category>Software</Category>\n<Quantity>10</Quantity>\n<CurrencyCode>EUR</CurrencyCode>\n<Price>799.00</Price>\n<LastMessageIndicator></LastMessageIndicator>\n</ns0:Item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/Aggregator",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"Aggregator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aggregator - Message 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version='1.0' encoding='UTF-8'?>\n<ns0:Item xmlns:ns0=\"http://demo.sap.com/eip/aggregator\" ItemNumber=\"30\" PurchaseOrderNumber=\"81001\">\n<ProductId>HT-1000</ProductId>\n<ProductName>Notebook Basic 15</ProductName>\n<Category>Notebooks</Category>\n<Quantity>1</Quantity>\n<CurrencyCode>EUR</CurrencyCode>\n<Price>956.00</Price>\n<LastMessageIndicator>X</LastMessageIndicator>\n</ns0:Item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/Aggregator",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"Aggregator"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ComposedMessageProcessor",
+			"item": [
+				{
+					"name": "ComposedMessageProcessor - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ComposedMessageProcessor",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ComposedMessageProcessor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ComposedMessageProcessor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<ns0:PurchaseOrder OrderDate=\"2019-05-06\" PurchaseOrderNumber=\"99401\" xmlns:ns0=\"http://demo.sap.com/eip/composed-message-processor\">\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ComposedMessageProcessor",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ComposedMessageProcessor"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ContentBasedRouting",
+			"item": [
+				{
+					"name": "ContentBasedRouter - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "fetch"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentBasedRouting/SendToDefault",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentBasedRouting",
+								"SendToDefault"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentBasedRouter - SendToDefault",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99501\" OrderDate=\"2019-10-23\" xmlns:ns0=\"http://demo.sap.com/eip/content-based-router\">\r\n<Address Type=\"Shipping\">\r\n<Country>AT</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please notify me before shipping.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentBasedRouting/SendToDefault",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentBasedRouting",
+								"SendToDefault"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentBasedRouter - IgnoreIfNoReceiver",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99501\" OrderDate=\"2019-10-23\" xmlns:ns0=\"http://demo.sap.com/eip/content-based-router\">\r\n<Address Type=\"Shipping\">\r\n<Country>NL</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please notify me before shipping.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentBasedRouting/Ignore",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentBasedRouting",
+								"Ignore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentBasedRouter - RaiseError",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99501\" OrderDate=\"2019-10-23\" xmlns:ns0=\"http://demo.sap.com/eip/content-based-router\">\r\n<Address Type=\"Shipping\">\r\n<Country>CH</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please notify me before shipping.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentBasedRouting/RaiseError",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentBasedRouting",
+								"RaiseError"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ContentEnricher",
+			"item": [
+				{
+					"name": "ContentEnricher - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "fetch"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentEnricher",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentEnricher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentEnricher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<ns0:PurchaseOrder xmlns:ns0=\"http://demo.sap.com/eip/content-enricher\" PurchaseOrderNumber=\"99401\" OrderDate=\"2019-05-06\">\r\n<Address Type=\"Shipping\">\r\n<Name>Ellen Adams</Name>\r\n<Street>123 Maple Street</Street>\r\n<City>Mill Valley</City>\r\n<State>CA</State>\r\n<Zip>10999</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Name>Tai Yee</Name>\r\n<Street>8 Oak Avenue</Street>\r\n<City>Old Town</City>\r\n<State>PA</State>\r\n<Zip>95819</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please leave packages in shed by driveway.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1001</ProductId>\r\n<ProductName>Notebook Basic 17</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1249.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"40\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"50\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentEnricher",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentEnricher"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ContentFilter",
+			"item": [
+				{
+					"name": "ContentFilter - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"type": "text",
+								"value": "fetch"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentFilter/FilterStep",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentFilter",
+								"FilterStep"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentFilter - FilterStep",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<ns0:PurchaseOrder xmlns:ns0=\"http://demo.sap.com/eip/content-filter\" PurchaseOrderNumber=\"99401\" OrderDate=\"2019-05-06\">\r\n<Address Type=\"Shipping\">\r\n<Name>Ellen Adams</Name>\r\n<Street>123 Maple Street</Street>\r\n<City>Mill Valley</City>\r\n<State>CA</State>\r\n<Zip>10999</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Name>Tai Yee</Name>\r\n<Street>8 Oak Avenue</Street>\r\n<City>Old Town</City>\r\n<State>PA</State>\r\n<Zip>95819</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please leave packages in shed by driveway.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1001</ProductId>\r\n<ProductName>Notebook Basic 17</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1249.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"40\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"50\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentFilter/FilterStep",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentFilter",
+								"FilterStep"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ContentFilter - MessageMapping",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<ns0:PurchaseOrder xmlns:ns0=\"http://demo.sap.com/eip/content-filter\" PurchaseOrderNumber=\"99401\" OrderDate=\"2019-05-06\">\r\n<Address Type=\"Shipping\">\r\n<Name>Ellen Adams</Name>\r\n<Street>123 Maple Street</Street>\r\n<City>Mill Valley</City>\r\n<State>CA</State>\r\n<Zip>10999</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Name>Tai Yee</Name>\r\n<Street>8 Oak Avenue</Street>\r\n<City>Old Town</City>\r\n<State>PA</State>\r\n<Zip>95819</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please leave packages in shed by driveway.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1001</ProductId>\r\n<ProductName>Notebook Basic 17</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1249.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"40\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"50\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ContentFilter/MessageMapping",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ContentFilter",
+								"MessageMapping"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MessageFilter",
+			"item": [
+				{
+					"name": "MessageFilter - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageFilter",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageFilter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessageFilter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:Product xmlns:ns0=\"http://demo.sap.com/eip/message-filter\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n<DimensionDepth>0.18</DimensionDepth>\r\n<DimensionHeight>0.03</DimensionHeight>\r\n<DimensionUnit>m</DimensionUnit>\r\n<DimensionWidth>0.32</DimensionWidth>\r\n</ns0:Product>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageFilter",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageFilter"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MessageSplitter",
+			"item": [
+				{
+					"name": "MessageSplitter - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageSplitter/IteratingSplitter",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageSplitter",
+								"IteratingSplitter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessageSplitter - IteratingSplitter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrders xmlns:ns0=\"http://demo.sap.com/eip/splitter\">\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99501\" OrderDate=\"2019-10-20\">\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1001</ProductId>\r\n<ProductName>Notebook Basic 17</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1249.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99502\" OrderDate=\"2019-10-22\">\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99503\" OrderDate=\"2019-10-22\">\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1103</ProductId>\r\n<ProductName>Smart Multimedia</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>20</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1540.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>\r\n</ns0:PurchaseOrders>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageSplitter/IteratingSplitter",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageSplitter",
+								"IteratingSplitter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessageSplitter - GeneralSplitter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99401\" OrderDate=\"2019-10-21\" xmlns:ns0=\"http://demo.sap.com/eip/splitter\">\r\n\t<address>dummy</address>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageSplitter/GeneralSplitter",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageSplitter",
+								"GeneralSplitter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MessageSplitter - MessageMapping",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ns0:PurchaseOrder PurchaseOrderNumber=\"99401\" OrderDate=\"2019-10-21\" xmlns:ns0=\"http://demo.sap.com/eip/splitter\">\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/MessageSplitter/MessageMapping",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"MessageSplitter",
+								"MessageMapping"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "RecipientList",
+			"item": [
+				{
+					"name": "RecipientList - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/RecipientList/StaticRouting",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"RecipientList",
+								"StaticRouting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RecipientList - StaticRouting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version='1.0' encoding='UTF-8'?>\r\n<ns0:Item xmlns:ns0=\"http://demo.sap.com/eip/recipient-list\" PurchaseOrderNumber=\"99202\" OrderDate=\"2019-05-06\" ItemNumber=\"10\">\r\n<ProductId>HT-XXXX</ProductId>\r\n<ProductName>XXXX</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</ns0:Item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/RecipientList/StaticRouting",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"RecipientList",
+								"StaticRouting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RecipientList - DynamicRouting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version='1.0' encoding='UTF-8'?>\r\n<ns0:Item xmlns:ns0=\"http://demo.sap.com/eip/recipient-list\" PurchaseOrderNumber=\"99204\" OrderDate=\"2019-06-28\" ItemNumber=\"10\">\r\n<ProductId>HT-XXXX</ProductId>\r\n<ProductName>XXXX</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</ns0:Item>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/RecipientList/DynamicRouting",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"RecipientList",
+								"DynamicRouting"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ScatterGather",
+			"item": [
+				{
+					"name": "ScatterGather - Get XSRF Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab7d129b-e90c-4328-8d38-db76f126d165",
+								"exec": [
+									"pm.globals.set(\"XSRFToken\",pm.response.headers.get(\"x-csrf-token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "X-CSRF-Token",
+								"value": "fetch",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ScatterGather/Request",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ScatterGather",
+								"Request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScatterGather - Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<sg:BankLoanRequest xmlns:sg=\"http://demo.sap.com/eip/scatter-gather\">\r\n         <FullName>John Doe</FullName>\r\n         <IdentificationNumber>1234567890</IdentificationNumber>\r\n         <BirthDate>07.07.1977</BirthDate>\r\n         <RequestID>100004</RequestID>\r\n         <Amount>20000</Amount>\r\n         <Currency>EUR</Currency>\r\n         <Terms>360</Terms>\r\n         <CreditScore></CreditScore>\r\n</sg:BankLoanRequest>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ScatterGather/Request",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ScatterGather",
+								"Request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScatterGather - Bid Bank AB",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<sg:BankLoanBid xmlns:sg=\"http://demo.sap.com/eip/scatter-gather\" >\n    <RequestID>100002</RequestID>\n    <Bid>\n        <BankName>AB</BankName>\n        <InterestRate>1.3</InterestRate>\n\t</Bid>\n</sg:BankLoanBid>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ScatterGather/Bids",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ScatterGather",
+								"Bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScatterGather - Bid Bank BB",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<sg:BankLoanBid xmlns:sg=\"http://demo.sap.com/eip/scatter-gather\" >\n    <RequestID>100004</RequestID>\n    <Bid>\n        <BankName>BB</BankName>\n        <InterestRate>1.2</InterestRate>\n\t</Bid>\n</sg:BankLoanBid>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ScatterGather/Bids",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ScatterGather",
+								"Bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScatterGather - Bid Bank CB",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/xml"
+							},
+							{
+								"key": "X-CSRF-Token",
+								"value": "{{XSRFToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<sg:BankLoanBid xmlns:sg=\"http://demo.sap.com/eip/scatter-gather\" >\n    <RequestID>100002</RequestID>\n    <Bid>\n        <BankName>CB</BankName>\n        <InterestRate>1.4</InterestRate>\n\t</Bid>\n</sg:BankLoanBid>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Pattern/ScatterGather/Bids",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Pattern",
+								"ScatterGather",
+								"Bids"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4f80b33d-a487-400c-98ce-e3bc56fccdbb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "019339f6-4281-48a4-ab8d-c0f56bedffc7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

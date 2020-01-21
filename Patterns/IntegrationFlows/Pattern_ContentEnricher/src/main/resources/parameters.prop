@@ -1,0 +1,7 @@
+#Fri Dec 06 11:30:12 UTC 2019
+connection=0400
+date=20190504
+credential=Dude
+host=https\://d0359-iflmap.hcisbt.eu1.hana.ondemand.com
+WebShopAddress=https\://refapp-espm-ui-cf.cfapps.eu10.hana.ondemand.com/espm-cloud-web/espm.svc
+airline=LH
