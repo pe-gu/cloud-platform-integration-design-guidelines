@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "4ef4449d-7e68-48b4-82eb-6759c149f81f",
+		"name": "PreserveReadability",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ExternalizeVolatileConfigurations",
+			"item": [
+				{
+					"name": "PreserveReadability_ExternalizeVolatileConfigurations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\r\n<ns0:PurchaseOrder xmlns:ns0=\"http://demo.sap.com/eip/content-filter\" PurchaseOrderNumber=\"99401\" OrderDate=\"2019-05-06\">\r\n<Address Type=\"Shipping\">\r\n<Name>Ellen Adams</Name>\r\n<Street>123 Maple Street</Street>\r\n<City>Mill Valley</City>\r\n<State>CA</State>\r\n<Zip>10999</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<Address Type=\"Billing\">\r\n<Name>Tai Yee</Name>\r\n<Street>8 Oak Avenue</Street>\r\n<City>Old Town</City>\r\n<State>PA</State>\r\n<Zip>95819</Zip>\r\n<Country>USA</Country>\r\n</Address>\r\n<DeliveryNotes>Please leave packages in shed by driveway.</DeliveryNotes>\r\n<Items>\r\n<Item ItemNumber=\"10\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"20\">\r\n<ProductId>HT-1001</ProductId>\r\n<ProductName>Notebook Basic 17</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>1249.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"30\">\r\n<ProductId>HT-1000</ProductId>\r\n<ProductName>Notebook Basic 15</ProductName>\r\n<Category>Notebooks</Category>\r\n<Quantity>1</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>956.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"40\">\r\n<ProductId>HT-1030</ProductId>\r\n<ProductName>Ergo Screen</ProductName>\r\n<Category>Flat screens</Category>\r\n<Quantity>2</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>460.00</Price>\r\n</Item>\r\n<Item ItemNumber=\"50\">\r\n<ProductId>HT-1101</ProductId>\r\n<ProductName>Smart Design</ProductName>\r\n<Category>Software</Category>\r\n<Quantity>10</Quantity>\r\n<CurrencyCode>EUR</CurrencyCode>\r\n<Price>799.00</Price>\r\n</Item>\r\n</Items>\r\n</ns0:PurchaseOrder>"
+						},
+						"url": {
+							"raw": "https://{{host}}/http/Externalize_Volatile_Configurations",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"Externalize_Volatile_Configurations"
+							]
+						},
+						"description": "HTTP request to initiate integration flow PreserveReadability_ExternalizeVolatileConfigurations."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ApplyBalancedEncapsulation",
+			"item": [
+				{
+					"name": "PreserveReadability_ApplyBalancedEncapsulation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "productId",
+								"value": "HT-2001",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/ApplyBalancedEncapsulation",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"ApplyBalancedEncapsulation"
+							]
+						},
+						"description": "HTTP request to initiate integration flow PreserveReadability_ApplyBalancedEncapsulation."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0d3e1cf8-b972-4a81-b84b-eb8df4a38174",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5ab7592c-038c-4bf9-a233-0ca3b760007e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
