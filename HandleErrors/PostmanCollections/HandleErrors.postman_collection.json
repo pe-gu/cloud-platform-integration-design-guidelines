@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "d7432247-016c-478a-9cde-d328a6dd74d9",
+		"name": "HandleErrors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ExceptionSubprocess",
+			"item": [
+				{
+					"name": "HandleErrors_ExtendWithExceptionSubprocess",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "productId",
+								"value": "HT-2001",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{host}}/http/HandleErrors/ExceptionSubprocess",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"http",
+								"HandleErrors",
+								"ExceptionSubprocess"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
